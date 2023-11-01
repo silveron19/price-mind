@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main-PriceMind</title>
+
+    <!-- Css style -->
+    <link rel="stylesheet" href="../css/main.css" />
+
+    <!-- Font style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet" />
+
+    <!-- Icon style -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="#" class="navbar-logo">PriceMind</a>
+
+      <div class="search__container">
+        <input class="search__input" type="text" placeholder="Search" />
+        <span class="material-symbols-outlined"> search </span>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="profile-button">
+          <span class="material-symbols-outlined"> account_circle </span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="floating-container">
+      <div class="floating-button">
+        <span class="material-symbols-outlined"> add </span>
+      </div>
+      <div class="element-container">
+        <span class="float-element tooltip-left" onclick="openCamera()">
+          <span class="material-symbols-outlined"> photo_camera </span>
+        </span>
+        <span class="float-element" onclick="openFile()">
+          <span class="material-symbols-outlined"> add_photo_alternate </span>
+        </span>
+        <span class="float-element">
+          <span class="material-symbols-outlined"> note </span>
+        </span>
+      </div>
+    </div>
+
+    <section class="hero-grid">
+      <div class="cards"></div>
+    </section>
+
+    <video autoplay id="video" style="display: none"></video>
+    <input type="file" id="userFile" style="display: none" />
+    <input type="file" id="camera" style="display: none" />
+
+    <template id="productRow">
+      <div class="card">
+        <p class="card-title">Kartu tanpa judul</p>
+      </div>
+    </template>
+
+    <div id="popup" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-head">
+          <input type="text" id="newTitle" value="Kartu tanpa judul" onclick="changeTitle()" />
+        </div>
+        <div class="line"></div>
+        <div class="modal-input">
+          <ul id="productList">
+            <li>
+              <input type="text" id="productName" placeholder="Nama Barang" />
+              <input type="number" inputmode="numeric" id="productPrice" placeholder="Harga" />
+            </li>
+          </ul>
+          <button class="add-button" onclick="addProduct()">Tambahkan</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../js/main.js"></script>
+  <script src="../js/input.js"></script>
+  <script src="../js/popup.js"></script>
+</html>
