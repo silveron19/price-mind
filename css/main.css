@@ -35,7 +35,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9999;
+  z-index: 9;
   min-height: 15vh;
 }
 
@@ -114,8 +114,9 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-height: 100%;
+  height: 100%;
   background-color: var(--secondary);
+  border-radius: 10px;
 }
 
 .card {
@@ -123,8 +124,15 @@ body {
   min-height: 80%;
   display: flex;
   justify-content: center;
+  align-items: start;
   position: relative;
-  background-color: var(--secondary);
+}
+
+.deleteCardButton {
+  position: absolute;
+  bottom: 0;
+  color: var(--primary);
+  cursor: pointer;
 }
 
 .card-title {
@@ -258,7 +266,6 @@ body {
 .modal {
   display: none;
   position: fixed;
-  z-index: 9999999;
   left: 0;
   top: 0;
   width: 100%;
@@ -267,6 +274,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 8rem 7% 1.4rem;
+  z-index: 9999999;
 }
 
 .modal-content {
@@ -278,6 +286,7 @@ body {
   max-height: 90%;
   border-radius: 10px;
   position: relative;
+  background-color: rgba(41, 23, 29);
 }
 
 .modal-content .close {
@@ -340,8 +349,8 @@ input[type='number'] {
   margin: 10px 0;
 }
 
-#productName,
-#productPrice,
+.productName,
+.productPrice,
 #addMoreList {
   width: 100%;
   padding: 12px;
@@ -350,10 +359,10 @@ input[type='number'] {
 
 #newTitle:hover,
 #newTitle:focus,
-#productName:hover,
-#productName:focus,
-#productPrice:hover,
-#productPrice:focus,
+.productName:hover,
+.productName:focus,
+.productPrice:hover,
+.productPrice:focus,
 #addMoreList:hover,
 #addMoreList:focus {
   background-color: #434343;
@@ -395,22 +404,8 @@ label {
   cursor: pointer;
 }
 
-#deleteButton, .deleteCardButton {
+.deleteButton {
   color: var(--secondary);
-  cursor: pointer;
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
   cursor: pointer;
 }
 

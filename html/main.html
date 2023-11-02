@@ -53,7 +53,7 @@
       </div>
     </div>
 
-    <section class="hero-grid"></section>
+    <section class="hero-grid" id="hero-grid"></section>
 
     <!-- <video autoplay id="video" style="display: none"></video> 
    <div class="display-cover" id="video">
@@ -91,12 +91,8 @@
     <template id="productRow">
       <div class="cards">
         <div class="card">
-          <img src="" alt="" />
           <p class="card-title">Kartu tanpa judul</p>
-          <span
-            id="deleteCardButton"
-            class="material-symbols-outlined"
-            style="display: none">
+          <span class="deleteCardButton material-symbols-outlined">
             delete
           </span>
         </div>
@@ -117,22 +113,22 @@
         <div class="line"></div>
         <div class="modal-input">
           <ul id="productList">
-            <template id="productTemplate">
-              <li>
-                <input type="text" id="productName" placeholder="Nama produk" />
-                <input
-                  type="number"
-                  inputmode="numeric"
-                  id="productPrice"
-                  placeholder="Rp." />
-                <span
-                  id="deleteButton"
-                  class="material-symbols-outlined"
-                  style="display: none">
-                  delete
-                </span>
-              </li>
-            </template>
+            <li>
+              <input
+                type="text"
+                class="productName"
+                placeholder="Nama produk" />
+              <input
+                type="number"
+                inputmode="numeric"
+                class="productPrice"
+                placeholder="Rp." />
+              <span
+                class="deleteButton material-symbols-outlined"
+                style="display: none">
+                delete
+              </span>
+            </li>
             <li>
               <input
                 type="text"
@@ -146,6 +142,12 @@
         </div>
       </div>
     </div>
+    <template id="imageCardTemplate">
+      <div class="image-card">
+        <img class="card-image" src="" alt="Uploaded Image" />
+        <p class="card-title">Kartu dengan Gambar</p>
+      </div>
+    </template>
   </body>
   <script src="../js/main.js"></script>
   <script src="../js/input.js"></script>

@@ -3,9 +3,11 @@ let noteButton = document.querySelector('.float-element:nth-of-type(2)');
 let closeButton = document.querySelector('.close');
 let cardTitleInput = document.getElementById('newTitle');
 
-noteButton.addEventListener('click', function () {
+noteButton.addEventListener('click', openPopup);
+
+function openPopup() {
   popup.style.display = 'flex';
-});
+}
 
 closeButton.addEventListener('click', closePopup);
 
@@ -15,13 +17,13 @@ function closePopup() {
 }
 
 function clearInputs() {
-  cardTitleInput.value = "Kartu tanpa judul";
+  cardTitleInput.value = 'Kartu tanpa judul';
 
   let productNameInputs = document.querySelectorAll('#productName');
-  productNameInputs.forEach((input) => (input.value = ""));
+  productNameInputs.forEach((input) => (input.value = ''));
 
   let productPriceInputs = document.querySelectorAll('#productPrice');
-  productPriceInputs.forEach((input) => (input.value = ""));
+  productPriceInputs.forEach((input) => (input.value = ''));
 }
 
 function changeTitle() {
