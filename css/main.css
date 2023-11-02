@@ -115,6 +115,21 @@ body {
   justify-content: center;
   flex-direction: column;
   min-height: 100%;
+  background-color: var(--secondary);
+}
+
+.card {
+  width: 100%;
+  min-height: 80%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-color: var(--secondary);
+}
+
+.card-title {
+  position: absolute;
+  color: var(--primary);
 }
 
 /* floating button */
@@ -169,10 +184,10 @@ body {
   z-index: 99;
 }
 .floating-container:hover {
-  height: 300px;
+  height: 240px;
 }
 .floating-container:hover .floating-button {
-  box-shadow: 0 10px 25px rgba(44, 179, 240, 0.6);
+  box-shadow: 0 10px 25px rgb(44, 179, 240);
   transform: translatey(16px);
   transition: all 0.3s;
 }
@@ -221,7 +236,6 @@ body {
   z-index: 0;
   opacity: 0;
   transform: translateY(100px);
-  cursor: pointer;
 }
 .floating-container .float-element .material-symbols-outlined {
   vertical-align: middle;
@@ -230,16 +244,16 @@ body {
 }
 .floating-container .float-element:nth-child(1) {
   background: var(--secondary);
-  box-shadow: 0 20px 20px -10px rgba(66, 165, 245, 0.5);
+  box-shadow: 0 20px 20px -10px rgba(255, 152, 0);
 }
 .floating-container .float-element:nth-child(2) {
   background: var(--secondary);
-  box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5);
+  box-shadow: 0 20px 20px -10px rgb(76, 175, 80);
 }
-.floating-container .float-element:nth-child(3) {
+/* .floating-container .float-element:nth-child(3) {
   background: var(--secondary);
-  box-shadow: 0 20px 20px -10px rgba(255, 152, 0, 0.5);
-}
+  box-shadow: 0 20px 20px -10px rgba(255, 152, 0);
+} */
 
 .modal {
   display: none;
@@ -260,7 +274,8 @@ body {
   flex-direction: column;
   border: 1px solid var(--secondary);
   padding: 2.8rem 3%;
-  height: 90%;
+  min-height: 20%;
+  max-height: 90%;
   border-radius: 10px;
   position: relative;
 }
@@ -282,19 +297,17 @@ ul {
   min-height: 10%;
   width: 30%;
   font-size: 5rem;
-  margin: 1rem 0;
+  margin: 1rem 0 0 0;
 }
 
 input {
   background: #323232;
   border-radius: 1.5px;
   color: var(--secondary);
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.125rem;
-}
-
-input::placeholder {
-  color: rgba(253, 253, 245, 0.4);
+  height: 40px;
+  width: 10rem;
 }
 
 input[type='number']::-webkit-inner-spin-button {
@@ -313,16 +326,26 @@ input[type='number'] {
 .modal-input {
   display: flex;
   flex-direction: column;
+  align-items: end;
+  justify-content: space-between;
+  height: 100%;
 }
 
-
-
 #productList li {
-  display: flex;
-  min-height: 10%;
-  width: 30%;
-  font-size: 5rem;
-  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.1fr;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+  margin: 10px 0;
+}
+
+#productName,
+#productPrice,
+#addMoreList {
+  width: 100%;
+  padding: 12px;
+  background: #323232;
 }
 
 #newTitle:hover,
@@ -330,25 +353,13 @@ input[type='number'] {
 #productName:hover,
 #productName:focus,
 #productPrice:hover,
-#productPrice:focus {
+#productPrice:focus,
+#addMoreList:hover,
+#addMoreList:focus {
   background-color: #434343;
   border-bottom: 1px solid var(--secondary);
   border-radius: 0;
   background-position: 100% center;
-}
-
-.card {
-  width: 100%;
-  min-height: 80%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  background-color: var(--secondary);
-}
-
-.card-title {
-  position: absolute;
-  color: var(--primary);
 }
 
 .close {
@@ -369,49 +380,24 @@ label {
   margin-bottom: 5px;
 }
 
-.productName,
-.productPrice {
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
+.submit {
+  padding: 10px 15px;
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-size: 1rem;
   border-radius: 4px;
+  font-weight: 700;
 }
 
-.add-button {
-  padding: 10px 15px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 4px;
+.submit:hover,
+.floating-container .float-element:hover {
+  background-color: #e2e2db;
   cursor: pointer;
 }
 
-.add-button:hover {
-  background-color: #45a049;
-}
-
-/* .modal {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  top: 0;
-  width: 100%;
-  min-height: 100vh;
-  overflow: auto;
-}
-
-.modal-content {
-  display: flex;
-  justify-content: space-between;
-  padding: 2rem 7%;
-  border: 1px solid #888;
-  position: relative;
-  width: 30%;
-  background-color: var(--secondary);
+#deleteButton, .deleteCardButton {
+  color: var(--secondary);
+  cursor: pointer;
 }
 
 .close {
@@ -426,7 +412,7 @@ label {
   color: black;
   text-decoration: none;
   cursor: pointer;
-} */
+}
 
 /* @keyframes colorChange {
   0% {

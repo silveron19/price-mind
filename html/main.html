@@ -41,9 +41,9 @@
         <span class="material-symbols-outlined"> add </span>
       </div>
       <div class="element-container">
-        <span class="float-element tooltip-left" onclick="openCamera()">
+        <!-- <span class="float-element tooltip-left">
           <span class="material-symbols-outlined"> photo_camera </span>
-        </span>
+        </span> -->
         <span class="float-element" onclick="openFile()">
           <span class="material-symbols-outlined"> add_photo_alternate </span>
         </span>
@@ -53,17 +53,53 @@
       </div>
     </div>
 
-    <section class="hero-grid">
-      <div class="cards"></div>
-    </section>
+    <section class="hero-grid"></section>
 
-    <video autoplay id="video" style="display: none"></video>
-    <input type="file" id="userFile" style="display: none" />
-    <input type="file" id="camera" style="display: none" />
+    <!-- <video autoplay id="video" style="display: none"></video> 
+   <div class="display-cover" id="video">
+      <video autoplay></video>
+      <canvas class="d-none"></canvas>
+
+      <div class="video-options">
+        <select name="" id="" class="custom-select">
+          <option value="">Select camera</option>
+        </select>
+      </div>
+
+      <img class="screenshot-image d-none" alt="" />
+
+      <div class="controls">
+        <button class="btn btn-danger play" title="Play">
+          <i data-feather="play-circle"></i>
+        </button>
+        <button class="btn btn-info pause d-none" title="Pause">
+          <i data-feather="pause"></i>
+        </button>
+        <button
+          class="btn btn-outline-success screenshot d-none"
+          title="ScreenShot">
+          <i data-feather="image"></i>
+        </button>
+      </div>
+    </div> -->
+    <input
+      type="file"
+      id="userFile"
+      accept="image/jpeg, image/png"
+      style="display: none" />
 
     <template id="productRow">
-      <div class="card">
-        <p class="card-title">Kartu tanpa judul</p>
+      <div class="cards">
+        <div class="card">
+          <img src="" alt="" />
+          <p class="card-title">Kartu tanpa judul</p>
+          <span
+            id="deleteCardButton"
+            class="material-symbols-outlined"
+            style="display: none">
+            delete
+          </span>
+        </div>
       </div>
     </template>
 
@@ -71,17 +107,42 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <div class="modal-head">
-          <input type="text" id="newTitle" value="Kartu tanpa judul" onclick="changeTitle()" />
+          <input
+            type="text"
+            id="newTitle"
+            value="Kartu tanpa judul"
+            onclick="changeTitle()"
+            style="padding: 10px" />
         </div>
         <div class="line"></div>
         <div class="modal-input">
           <ul id="productList">
+            <template id="productTemplate">
+              <li>
+                <input type="text" id="productName" placeholder="Nama produk" />
+                <input
+                  type="number"
+                  inputmode="numeric"
+                  id="productPrice"
+                  placeholder="Rp." />
+                <span
+                  id="deleteButton"
+                  class="material-symbols-outlined"
+                  style="display: none">
+                  delete
+                </span>
+              </li>
+            </template>
             <li>
-              <input type="text" id="productName" placeholder="Nama Barang" />
-              <input type="number" inputmode="numeric" id="productPrice" placeholder="Harga" />
+              <input
+                type="text"
+                id="addMoreList"
+                placeholder="Tambahkan list"
+                onclick="addList()"
+                readonly />
             </li>
           </ul>
-          <button class="add-button" onclick="addProduct()">Tambahkan</button>
+          <button class="submit" onclick="addCard()">Simpan</button>
         </div>
       </div>
     </div>
