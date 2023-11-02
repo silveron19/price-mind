@@ -1,26 +1,38 @@
 # price-mind
-Ini adalah website untuk menyimpan barang beserta harganya. Website ini berguna untuk orang yang ingin menghemat dengan cara membandingkan pembelian barang-barang yang lalu dengan situasi saat ini atau yang akan datang.
+This is a website to store goods along with their prices. 
+This website is useful for people who want to save by comparing past purchases with current or future situations.
+
+## Stack
+- HTML & CSS
+- JS
 
 ## How to use
-- 
+- Press the "get started" button
+- Hover / Press the '+' button (floating button)
+- Choose mode:
+  1. Add note
+  2. Add an image
+- Fill in the card title, item name, and price
+- Click the save button
+- Cards can be clicked to see a list of items that have been created
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Things that need to fix immediately
+- Search bar not yet working
+- Profile not yet working
+- Bug in card when user add more than 8 cards
+- Bug in delete card button: user can't delete the card
+- Bug in card that have been created: user can't add more list 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Next moves
+- I will fix that bugs later... hopefully in a short period of time
+- Need some recovery for my healthy
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## For a while
+If you want to use this website nowdays:
+- Delete the card:
+  1. Go to 'inspect'
+  2. In inspect navbar, go to 'application'
+  3. In branch storage, click 'local storage'
+  4. Then, click the website link
+  5. Right side of the filter button, click the 'clear all' button 
