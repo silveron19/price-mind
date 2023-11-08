@@ -1,5 +1,5 @@
 # price-mind
-This is a website to store goods along with their prices. 
+This is a website to list items along with their prices. 
 This website is useful for people who want to save by comparing past purchases with current or future situations.
 
 ## Stack
