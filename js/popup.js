@@ -14,6 +14,7 @@ closeButton.addEventListener('click', closePopup);
 function closePopup() {
   popup.style.display = 'none';
   clearInputs();
+  location.reload();
 }
 
 function clearInputs() {

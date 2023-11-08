@@ -20,7 +20,6 @@ body {
   font-family: 'Lato', sans-serif;
   background-color: var(--primary);
   color: var(--secondary);
-  height: 4000px;
 }
 
 /* Navbar */
@@ -90,49 +89,58 @@ body {
 
 .navbar-extra span {
   font-size: 3.5rem;
-  margin-inline: 4rem;
 }
 
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
-.hero-grid {
+/* .hero-grid {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 1fr;
-  position: relative;
+  grid-template-columns: repeat(5, 1fr);
   align-items: center;
   padding: 8rem 7% 1.4rem;
   row-gap: 20px;
   column-gap: 20px;
+  overflow: scroll;
+} */
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin: 8rem 7% 0;
+  padding-right: 1rem;
+  max-height: 50vh;
+  min-height: 77.5vh;
+  overflow-y: scroll;
+  background-color: var(--primary);
+  align-items: center;
 }
 
 .cards {
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-direction: column;
-  height: 100%;
+  text-align: center;
+  align-items: center;
+  min-height: 200px;
   background-color: var(--secondary);
+  position: relative;
   border-radius: 10px;
 }
 
-.card {
-  width: 100%;
-  min-height: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  position: relative;
+.cards:hover{
+  background-color: rgb(223, 223, 217);
 }
 
-.deleteCardButton {
+.deleteCardButton.material-symbols-outlined {
   position: absolute;
   bottom: 0;
   color: var(--primary);
   cursor: pointer;
+  font-size: 2rem;
+  margin: 12px;
 }
 
 .card-title {
@@ -350,8 +358,7 @@ input[type='number'] {
 }
 
 .productName,
-.productPrice,
-#addMoreList {
+.productPrice {
   width: 100%;
   padding: 12px;
   background: #323232;
@@ -369,6 +376,10 @@ input[type='number'] {
   border-bottom: 1px solid var(--secondary);
   border-radius: 0;
   background-position: 100% center;
+}
+
+#addMoreList {
+  text-align: center;
 }
 
 .close {

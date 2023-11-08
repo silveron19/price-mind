@@ -1,8 +1,13 @@
 let maxListCount = 10;
-let cards = JSON.parse(localStorage.getItem('cards')) || [];
-cards.forEach(function (card, index) {
-  createCard(card, index);
-});
+function getCards() {
+  let cards = JSON.parse(localStorage.getItem('cards')) || [];
+  return cards;
+}
+
+let cards = getCards();
+for (let index = 0; index < cards.length; index++) {
+  createCard(cards[index], index);
+}
 
 let ul = document.getElementById('productList');
 
@@ -76,9 +81,8 @@ function addCard() {
   });
 
   let card = { title: title, products: products };
-
   cards.push(card);
-  const index = cards.length - 1;
+  const index = cards.length;
   localStorage.setItem('cards', JSON.stringify(cards));
   createCard(card, index);
   closePopup();
@@ -90,14 +94,17 @@ function createCard(card, index) {
   const cardElement = clone.querySelector('.cards');
   cardElement.setAttribute('data-index', index);
   cardElement.querySelector('.card-title').textContent = card.title;
+  let deleteCard = clone.querySelector('.deleteCardButton');
 
   cardElement.onclick = function () {
     editCard(card, index);
   };
-  let deleteCard = clone.querySelector('.deleteCardButton');
-  deleteCard.onclick = function () {
-    removeCardFromStorage(index);
+
+  deleteCard.onclick = function (event) {
+    event.stopPropagation();
+    removeCard(index);
   };
+
   document.getElementById('hero-grid').appendChild(clone);
 }
 
@@ -107,6 +114,12 @@ function editCard(card, index) {
   newTitle.value = card.title;
 
   let productList = document.getElementById('productList');
+  let firstList = document.querySelector('.first-row');
+
+  while (firstList.firstChild) {
+    firstList.removeChild(firstList.firstChild);
+  }
+
   card.products.forEach(function (product) {
     let li = document.createElement('li');
     let productNameInput = document.createElement('input');
@@ -120,10 +133,25 @@ function editCard(card, index) {
     productPriceInput.type = 'number';
     productPriceInput.setAttribute('inputmode', 'numeric');
     productPriceInput.classList.add('productPrice');
-    productPriceInput.value = product.price;
+
+    if (product.price == '' || product.name == '') {
+      productPriceInput.placeholder = 'Rp.';
+      productNameInput.placeholder = 'Nama barang';
+    } else {
+      productPriceInput.value = product.price;
+      productNameInput.value = product.name;
+    }
 
     deleteButton.classList.add('deleteButton', 'material-symbols-outlined');
+    deleteButton.style.display = 'none';
     deleteButton.textContent = 'delete';
+
+    let deleteButtons = ul.getElementsByClassName('deleteButton');
+    if (deleteButtons.length > 1) {
+      for (const button of deleteButtons) {
+        button.style.display = 'inline';
+      }
+    }
 
     li.appendChild(productNameInput);
     li.appendChild(productPriceInput);
@@ -134,17 +162,8 @@ function editCard(card, index) {
       this.parentNode.remove();
     });
   });
-
-  // let fileInput = document.getElementById('userFile');
-  // fileInput.onchange = function (event) {
-  //   let file = event.target.files[0];
-  //   let reader = new FileReader();
-  //   reader.onload = function (e) {
-  //     let imageSrc = e.target.result;
-  //     addImageCard(imageSrc);
-  //   };
-  //   reader.readAsDataURL(file);
-  // };
+  let addMoreList = productList.querySelector('#addMoreList');
+  productList.appendChild(addMoreList);
 
   let submitButton = document.querySelector('.submit');
   submitButton.onclick = function () {
@@ -152,10 +171,22 @@ function editCard(card, index) {
   };
 }
 
-function removeCardFromStorage(index) {
-  let cards = JSON.parse(localStorage.getItem('cards'));
+// let fileInput = document.getElementById('userFile');
+// fileInput.onchange = function (event) {
+//   let file = event.target.files[0];
+//   let reader = new FileReader();
+//   reader.onload = function (e) {
+//     let imageSrc = e.target.result;
+//     addImageCard(imageSrc);
+//   };
+//   reader.readAsDataURL(file);
+// };
 
-  localStorage.removeItem(cards[index]);
+function removeCard(index) {
+  let cards = JSON.parse(localStorage.getItem('cards'));
+  cards.splice(index, 1);
+  localStorage.setItem('cards', JSON.stringify(cards));
+  location.reload();
 }
 
 function updateCard(index) {

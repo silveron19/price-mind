@@ -53,6 +53,7 @@
       </div>
     </div>
 
+    
     <section class="hero-grid" id="hero-grid"></section>
 
     <!-- <video autoplay id="video" style="display: none"></video> 
@@ -89,13 +90,12 @@
       style="display: none" />
 
     <template id="productRow">
-      <div class="cards">
-        <div class="card">
-          <p class="card-title">Kartu tanpa judul</p>
-          <span class="deleteCardButton material-symbols-outlined">
-            delete
-          </span>
-        </div>
+      <div class="cards" id="cards">
+        <p class="card-title">Kartu tanpa judul</p>
+        <span
+          class="deleteCardButton material-symbols-outlined">
+          delete
+        </span>
       </div>
     </template>
 
@@ -113,7 +113,7 @@
         <div class="line"></div>
         <div class="modal-input">
           <ul id="productList">
-            <li>
+            <li class="first-row">
               <input
                 type="text"
                 class="productName"
