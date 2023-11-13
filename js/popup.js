@@ -14,17 +14,10 @@ closeButton.addEventListener('click', closePopup);
 function closePopup() {
   popup.style.display = 'none';
   clearInputs();
-  location.reload();
 }
 
 function clearInputs() {
-  cardTitleInput.value = 'Kartu tanpa judul';
-
-  let productNameInputs = document.querySelectorAll('#productName');
-  productNameInputs.forEach((input) => (input.value = ''));
-
-  let productPriceInputs = document.querySelectorAll('#productPrice');
-  productPriceInputs.forEach((input) => (input.value = ''));
+  
 }
 
 function changeTitle() {

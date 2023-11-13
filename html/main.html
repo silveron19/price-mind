@@ -22,19 +22,52 @@
   </head>
   <body>
     <nav class="navbar">
-      <a href="#" class="navbar-logo">PriceMind</a>
+      <a href="/index.html" class="navbar-logo">PriceMind</a>
 
       <div class="search__container">
-        <input class="search__input" type="text" placeholder="Search" />
+        <input
+          class="search__input"
+          type="text"
+          placeholder="Search"
+          name="search"
+          id="search__bar"
+          onkeyup="search_card()" />
         <span class="material-symbols-outlined"> search </span>
       </div>
 
       <div class="navbar-extra">
-        <a href="#" id="profile-button">
-          <span class="material-symbols-outlined"> account_circle </span>
-        </a>
+        <div id="profile-button">
+          <span class="profile-icon material-symbols-outlined">
+            account_circle
+          </span>
+        </div>
       </div>
     </nav>
+
+    <div class="dropdown-profile">
+      <div class="sub-menu">
+        <div class="profile">
+          <a href="/html/profile" id="profile-button" onclick="openProfile()">
+            <span class="profile-icon material-symbols-outlined">
+              account_circle
+            </span>
+          </a>
+          <h3>Username</h3>
+        </div>
+        <hr />
+        <ul>
+          <li>
+            <p>Tutorial</p>
+          </li>
+          <li>
+            <p>Help</p>
+          </li>
+          <li>
+            <p>Sign Out</p>
+          </li>
+        </ul>
+      </div>
+    </div>
 
     <div class="floating-container">
       <div class="floating-button">
@@ -53,8 +86,9 @@
       </div>
     </div>
 
-    
-    <section class="hero-grid" id="hero-grid"></section>
+    <section class="hero" id="hero">
+      <div class="hero-grid" id="hero-grid"></div>
+    </section>
 
     <!-- <video autoplay id="video" style="display: none"></video> 
    <div class="display-cover" id="video">
@@ -91,11 +125,8 @@
 
     <template id="productRow">
       <div class="cards" id="cards">
-        <p class="card-title">Kartu tanpa judul</p>
-        <span
-          class="deleteCardButton material-symbols-outlined">
-          delete
-        </span>
+        <p class="card-title" style="padding-left: 1rem">Kartu tanpa judul</p>
+        <span class="deleteCardButton material-symbols-outlined"> delete </span>
       </div>
     </template>
 
@@ -152,4 +183,6 @@
   <script src="../js/main.js"></script>
   <script src="../js/input.js"></script>
   <script src="../js/popup.js"></script>
+  <script src="../js/search.js"></script>
+  <script src="../js/profile.js"></script>
 </html>

@@ -110,14 +110,17 @@ function createCard(card, index) {
 
 function editCard(card, index) {
   openPopup();
+
   let newTitle = document.getElementById('newTitle');
   newTitle.value = card.title;
-
   let productList = document.getElementById('productList');
-  let firstList = document.querySelector('.first-row');
+  let addMoreList = productList.querySelector('#addMoreList');
 
-  while (firstList.firstChild) {
-    firstList.removeChild(firstList.firstChild);
+  while (productList.firstChild) {
+    if (productList.firstChild === addMoreList) {
+      break;
+    }
+    productList.removeChild(productList.firstChild);
   }
 
   card.products.forEach(function (product) {
@@ -125,6 +128,8 @@ function editCard(card, index) {
     let productNameInput = document.createElement('input');
     let productPriceInput = document.createElement('input');
     let deleteButton = document.createElement('span');
+
+    li.classList.add('first-row');
 
     productNameInput.type = 'text';
     productNameInput.classList.add('productName');
@@ -146,13 +151,6 @@ function editCard(card, index) {
     deleteButton.style.display = 'none';
     deleteButton.textContent = 'delete';
 
-    let deleteButtons = ul.getElementsByClassName('deleteButton');
-    if (deleteButtons.length > 1) {
-      for (const button of deleteButtons) {
-        button.style.display = 'inline';
-      }
-    }
-
     li.appendChild(productNameInput);
     li.appendChild(productPriceInput);
     li.appendChild(deleteButton);
@@ -162,7 +160,13 @@ function editCard(card, index) {
       this.parentNode.remove();
     });
   });
-  let addMoreList = productList.querySelector('#addMoreList');
+
+  let deleteButtons = productList.getElementsByClassName('deleteButton');
+  if (card.products.length > 1) {
+    for (const button of deleteButtons) {
+      button.style.display = 'inline';
+    }
+  }
   productList.appendChild(addMoreList);
 
   let submitButton = document.querySelector('.submit');
